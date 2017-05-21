@@ -1,4 +1,5 @@
 require 'pry'
+require 'colorize'
 
 require_relative 'customer'
 require_relative 'menu'
@@ -14,17 +15,17 @@ require_relative 'meal'
 def welcome(customer, menu)
     
     puts `clear`
-    puts "Welcome to the Lunch Lady Cafe \n\n"
-    puts "Currently we only offer main entrees and side dishes."
-    puts "Please select as may main entree sides as you would like. \n\n"
+    puts "Welcome to the Lunch Lady Cafe \n\n".black.on_red.blink
+    puts "Currently we only offer main entrees and side dishes.".colorize(:red)
+    puts "Please select as many main entree and sides as you would like. \n\n".colorize(:red)
 
     display_main(customer, menu)
 end
 
 def display_main(customer, menu)
 
-    puts "Please select an option: \n\n"
-    puts "1) Select an main entree"  
+    puts "Please select an option: \n\n".colorize(:red)
+    puts "1) Select a main entree"  
     puts "2) Select a side entree"
     puts "3) Display all your items and remove any you don't want"
     puts "4) Checkout"
@@ -57,7 +58,7 @@ end
 def select_main_entree(customer, menu)
     
     puts `clear`
-    puts "Please select the main entree you want"
+    puts "Please select the main entree you want".colorize(:red)
 
     menu.dishes.return_entrees.each_with_index { |entree, index| puts "#{index.to_i + 1}) #{entree.name} ($#{entree.cost})"}
 
@@ -79,7 +80,7 @@ end
 def select_side_dish(customer, menu)
     
     puts `clear`
-    puts "Please select the main entree you want"
+    puts "Please select the main entree you want".colorize(:red)
 
     menu.dishes.return_sides.each_with_index { |side, index| puts "#{index.to_i + 1}) #{side.name} ($#{side.cost})"}
 
